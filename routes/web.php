@@ -21,6 +21,14 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [UserController::class, 'listUsers'])->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::get('/user', [UserController::class, 'create'])->name('user.create');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+Route::get('/user/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

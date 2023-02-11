@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -24,6 +24,12 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
         return redirect('/dashboard')->with('success', 'Usuario creado exitosamente.');
     }
 
