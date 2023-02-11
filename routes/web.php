@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', [UserController::class, 'listUsers'])->name('dashboard');
+    Route::get('/dashboard', [UserController::class, 'list'])->name('dashboard');
 
     //User crud routes
     Route::get('/user', [UserController::class, 'create'])->name('user.create');

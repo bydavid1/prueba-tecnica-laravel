@@ -7,11 +7,10 @@ use App\Http\Requests\User\RegisterRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function listUsers() {
+    public function list() {
         $users = User::where('id', '!=', Auth::user()->id)->get();
         // dd($users);
 
@@ -36,9 +35,7 @@ class UserController extends Controller
     }
 
     public function edit(int $user_id) {
-        Validator::make(['user_id' => $user_id], ['user_id' => 'required', 'exists:users,id'])->validate();
-
-        $user = User::find($user_id);
+        $user = User::findOrFail($user_id);
 
         return view('user.edit', ['user' => $user]);
     }
