@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\RegisterRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,7 +24,7 @@ class UserController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
         User::create([
             'name' => $request->input('name'),
@@ -42,7 +43,7 @@ class UserController extends Controller
         return view('user.edit', ['user' => $user]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $user = User::findOrFail($id);
 
