@@ -12,13 +12,12 @@
                     <div class="flex justify-center">
                         <div class="w-full">
                             @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                                @foreach ($errors->all() as $error)
+                                    <div class="bg-red-600 text-white p-4 rounded mt-4">
+                                        <p class="font-bold">Error:</p>
+                                        <p>{{ $error }}</p>
+                                    </div>
+                                @endforeach
                             @endif
                             <form action="/user/{{ $user->id }}" method="post">
                                 @csrf

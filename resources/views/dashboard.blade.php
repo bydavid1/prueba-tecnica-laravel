@@ -27,12 +27,12 @@
                                     <td class="border px-4 py-2">{{ $user->name }}</td>
                                     <td class="border px-4 py-2">{{ $user->email }}</td>
                                     <td class="border px-4 py-2">{{ $user->email_verified_at }}</td>
-                                    <td class="border px-4 py-2">
-                                        <a href="{{ route('user.edit', $user->id) }}" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Editar</a>
+                                    <td class="border px-4 py-2 flex w-full justify-center">
+                                        <a href="{{ route('user.edit', $user->id) }}" class="items-center mr-2 px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Editar</a>
                                         <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="inline">
                                             @method('DELETE')
                                             @csrf
-                                            <button type="submit" class="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded">Eliminar</button>
+                                            <button type="submit" class="items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">Eliminar</button>
                                         </form>
                                     </td>
                                 </tr>
